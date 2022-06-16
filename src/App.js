@@ -5,6 +5,18 @@ import ItemList from "./components/ItemList";
 class App extends React.Component {
   state = { itemList: ["study", "gym"] };
 
+  onItemAdd = (newItem) => {
+    const newItemList = this.state.itemList;
+    newItemList.push(newItem);
+    this.setState({ itemList: newItemList });
+    console.log(this.state.itemList);
+  };
+
+  onClearList = () => {
+    const newItemList = [];
+    this.setState({ itemList: newItemList });
+  };
+
   render() {
     return (
       <div>
@@ -15,7 +27,10 @@ class App extends React.Component {
             </label>
           </div>
         </div>
-        <DataInput />
+        <DataInput
+          onSubmitButton={this.onItemAdd}
+          onClearButton={this.onClearList}
+        />
         <ItemList itemList={this.state.itemList} />
       </div>
     );

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Submit from "./Submit";
 import ClearList from "./ClearList";
 
-const DataInput = () => {
+const DataInput = (props) => {
   const [term, setTerm] = useState("");
 
   return (
@@ -19,10 +19,10 @@ const DataInput = () => {
           />
         </div>
         <div className="col-auto mx-1">
-          <Submit />
+          <Submit onSubmit={() => props.onSubmitButton(term)} />
         </div>
         <div className="col-auto mx-1">
-          <ClearList />
+          <ClearList onSubmit={props.onClearButton} />
         </div>
       </div>
     </form>
