@@ -3,17 +3,25 @@ import DataInput from "./components/DataInput";
 import ItemList from "./components/ItemList";
 
 class App extends React.Component {
-  state = { itemList: ["study", "gym"] };
+  state = { itemList: [] };
 
   onItemAdd = (newItem) => {
+    if (newItem.length === 0) {
+      return;
+    }
     const newItemList = this.state.itemList;
     newItemList.push(newItem);
     this.setState({ itemList: newItemList });
-    console.log(this.state.itemList);
   };
 
   onClearList = () => {
     const newItemList = [];
+    this.setState({ itemList: newItemList });
+  };
+
+  onRemoveItem = (index) => {
+    const newItemList = this.state.itemList;
+    newItemList.splice(index, 1);
     this.setState({ itemList: newItemList });
   };
 
@@ -31,7 +39,10 @@ class App extends React.Component {
           onSubmitButton={this.onItemAdd}
           onClearButton={this.onClearList}
         />
-        <ItemList itemList={this.state.itemList} />
+        <ItemList
+          itemList={this.state.itemList}
+          onRemoveItem={this.onRemoveItem}
+        />
       </div>
     );
   }

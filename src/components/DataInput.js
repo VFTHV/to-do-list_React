@@ -19,7 +19,12 @@ const DataInput = (props) => {
           />
         </div>
         <div className="col-auto mx-1">
-          <Submit onSubmit={() => props.onSubmitButton(term)} />
+          <Submit
+            onSubmit={() => {
+              props.onSubmitButton(term);
+              setTerm("");
+            }}
+          />
         </div>
         <div className="col-auto mx-1">
           <ClearList onSubmit={props.onClearButton} />
