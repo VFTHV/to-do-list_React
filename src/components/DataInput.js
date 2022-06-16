@@ -7,8 +7,8 @@ const DataInput = (props) => {
 
   return (
     <form>
-      <div className="form-group row mt-3 justify-content-center">
-        <div className="col-auto mx-1">
+      <div className="form-group row mt-3 mx-1 justify-content-center">
+        <div className="col-12 col-sm-6 me-1 mt-2">
           <input
             type="text"
             className="form-control"
@@ -18,7 +18,7 @@ const DataInput = (props) => {
             value={term}
           />
         </div>
-        <div className="col-auto mx-1">
+        <div className="col col-sm mt-2">
           <Submit
             onSubmit={() => {
               props.onSubmitButton(term);
@@ -26,7 +26,7 @@ const DataInput = (props) => {
             }}
           />
         </div>
-        <div className="col-auto mx-1">
+        <div className="col col-sm mt-2">
           <ClearList onSubmit={props.onClearButton} />
         </div>
       </div>

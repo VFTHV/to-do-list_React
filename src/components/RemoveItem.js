@@ -6,7 +6,7 @@ const RemoveItem = (props) => {
       <button className="ms-3 btn btn-danger" onClick={props.onRemoveItem}>
         X
       </button>
-      <button className="ms-3 btn btn-success" onClick={props.onRemoveItem}>
+      <button className="ms-1 btn btn-success" onClick={props.onRemoveItem}>
         Done
       </button>
     </React.Fragment>
