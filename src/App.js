@@ -3,14 +3,25 @@ import DataInput from "./components/DataInput";
 import ItemList from "./components/ItemList";
 
 class App extends React.Component {
-  state = { itemList: [] };
+  state = {
+    itemList: [
+      {
+        action: "gym",
+        done: false,
+      },
+      {
+        action: "study",
+        done: false,
+      },
+    ],
+  };
 
   onItemAdd = (newItem) => {
     if (newItem.length === 0) {
       return;
     }
     const newItemList = this.state.itemList;
-    newItemList.push(newItem);
+    newItemList.push({ action: newItem, done: false });
     this.setState({ itemList: newItemList });
   };
 
@@ -22,6 +33,15 @@ class App extends React.Component {
   onRemoveItem = (index) => {
     const newItemList = this.state.itemList;
     newItemList.splice(index, 1);
+    this.setState({ itemList: newItemList });
+  };
+
+  itemDone = (index) => {
+    const newItemList = this.state.itemList;
+    newItemList[index].done === false
+      ? (newItemList[index].done = true)
+      : (newItemList[index].done = false);
+
     this.setState({ itemList: newItemList });
   };
 
@@ -42,6 +62,7 @@ class App extends React.Component {
         <ItemList
           itemList={this.state.itemList}
           onRemoveItem={this.onRemoveItem}
+          itemDone={this.itemDone}
         />
       </div>
     );
